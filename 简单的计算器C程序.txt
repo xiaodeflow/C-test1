@@ -1,0 +1,65 @@
+////计算器//////
+#include<stdio.h>
+int add(int x, int y)
+{
+	return x + y;
+}
+int sub(int x, int y)
+{
+	return x - y;
+}
+int mul(int x, int y)
+{
+	return x * y;
+}
+int div(int x, int y)
+{
+	return x / y;
+}
+int main()
+{
+	int input;
+	int a, b;
+	do
+	{
+		printf("************************\n");
+		printf("*** 1.add      2.sub ***\n");
+		printf("****3.mul      4.div ***\n");
+		printf("****     0.exit     ****\n");
+		printf("************************\n");
+		printf("请选择>");
+		scanf_s("%d", &input);
+		switch (input)
+		{
+		case 1:
+			printf("请输入两个要操作的整数(中间用逗号隔开)>");
+			scanf_s("%d,%d", &a, &b);
+			printf("结果为：%d\n", add(a, b));
+			break;
+		case 2:
+			printf("请输入两个要操作的整数(中间用逗号隔开)>");
+			scanf_s("%d,%d", &a, &b);
+			printf("结果为：%d\n", sub(a, b));
+			break;
+		case 3:
+			printf("请输入两个要操作的整数(中间用逗号隔开)>");
+			scanf_s("%d,%d", &a, &b);
+			printf("结果为：%d\n", mul(a, b));
+			break;
+		case 4:
+			printf("请输入两个要操作的整数(中间用逗号隔开)>");
+			scanf_s("%d,%d", &a, &b);
+			printf("结果为：%d\n", div(a, b));
+			break;
+		case 0:
+			printf("退出程序\n");
+			break;
+		default:
+			printf("请选择正确的选项\n");
+			break;
+		}
+
+	} 
+	while (input!=0);
+	return 0;
+}
