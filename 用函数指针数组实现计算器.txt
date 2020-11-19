@@ -1,0 +1,54 @@
+计算器
+#include<stdio.h>
+int add(int x, int y)
+{
+	return x + y;//加法运算
+}
+int sub(int x, int y)
+{
+	return x - y;//减法运算
+}
+int mul(int x, int y)
+{
+	return x * y;//乘法运算
+}
+int div(int x, int y)
+{
+	return x / y;//除法运算
+}
+int xor(int x, int y)
+{
+	return x ^ y;//异或运算
+}
+int mo(int x, int y)
+{
+	return x % y;//模运算
+}
+int main()
+{
+	int input;
+	int a, b;
+	int(*pfarr[])(int, int) = { 0,add,sub,mul,div,xor,mo };
+		do
+		{
+			printf("************************\n");
+			printf("*** 1.add      2.sub ***\n");
+			printf("****3.mul      4.div ***\n");
+			printf("****5.xor      6.mo  ****\n");
+			printf("****     0.exit     ****\n");
+			printf("请选择>");
+			scanf_s("%d", &input);
+			if (input > 0 && input < 7)
+			{
+				printf("请输入两个操作数：");
+				scanf_s("%d,%d", &a, &b);
+				int let = pfarr[input](a,b);
+				printf("%d\n", let);
+			}
+			else if (input == 0)
+				printf("退出程序\n");
+			else
+				printf("选择错误，请重新选择");
+		} while (input!=0);
+		return 0;
+}
