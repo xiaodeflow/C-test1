@@ -1,0 +1,23 @@
+/*输入一行字符，分别统计出其中英文字母、数字、空格和其他字符的个数。*/
+#include<stdio.h>
+int main()
+{
+	int c;
+	int n1=0, n2=0,n3=0,n4=0;
+	while ((c = getchar()) != 10)
+		{
+			if (c > 'a'&&c<'z' || c>'A'&&c < 'Z')
+			n1++;
+			else if (c > '0'&&c < '9')
+				n2++;
+			else if (c == ' ')
+				n3++;
+			else
+				n4++;
+	}
+	printf("英文字母个数：%d", n1);
+	printf("数字字母个数：%d", n2); 
+	printf("空格个数：%d", n3); 
+	printf("其他字符个数：%d", n4);
+	return 0;
+}
