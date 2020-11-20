@@ -1,0 +1,111 @@
+#include <stdio.h>
+#include<string.h>
+struct car
+{
+	char car_num[10];
+	int floor;
+	int position_num;
+	int time;
+}CAR[12] = { {"0",1,1,0},{"0",1,2,0},{"0",1,3,0},{"0",1,4,0},{"0",1,5,0},{"0",1,6,0}
+			,{"0",2,1,0},{"0",2,2,0},{"0",2,3,0},{"0",2,4,0},{ "0",2,5,0 }, {"0",2,6,0} };
+void park(struct car CAR[])
+{
+	int i, j, k;
+	int flag = 0;
+	char carn[10];
+	printf("\n请输入车牌号\n");
+	scanf_s("%s", carn,10);
+	for (k = 0; k < 12; k++)
+	{
+		if (strcmp(CAR[k].car_num, carn) == 0)
+		{
+			printf("该车已在停车场内\n");
+			flag = 2;
+			break;
+		}
+	}
+	for (i = 0; i < 12; i++)
+	{
+		if (strcmp(CAR[i].car_num, "0") == 0 && flag == 0)
+		{
+			strcpy(CAR[i].car_num, carn);
+			for (j = 0; j < 12; j++)
+			{
+				if (strcmp(CAR[j].car_num, "0") != 0)
+				{
+					CAR[j].time += 5;
+				}
+			}
+			printf("该车可停在了%d层%d号\n", CAR[i].floor, CAR[i].position_num);
+			flag = 1;
+			break;
+		}
+	}
+	if (flag == 0)
+	{
+		printf("\n停车场已满\n");
+	}
+
+}
+void leave(struct car CAR[])
+{
+	int i, j;
+	int flag = 0;
+	char carn[10];
+	float price;
+	printf("\n请输入车牌号\n");
+	scanf_s("%s", carn,10);
+	for (i = 0; i < 12; i++)
+	{
+		if (strcmp(CAR[i].car_num, carn) == 0)
+		{
+			strcpy(CAR[i].car_num, "0");
+			price = CAR[i].time*0.04;
+			CAR[i].time = 0;
+			flag = 1;
+			printf("\n停车费%f\n", price);
+		}
+	}
+	if (flag == 0)
+	{
+		printf("\n停车场内无此车\n");
+	}
+
+}
+void information(struct car CAR[])
+{
+	printf("车牌号    \t层号\t位号\t时间\n");
+	for (int i = 0; i < 12; i++)
+	{
+		printf("%-10s\t%d\t%d\t%d\n", CAR[i].car_num, CAR[i].floor, CAR[i].position_num, CAR[i].time);
+	}
+
+}
+int main()
+{
+	int n;
+	int m = -1;
+	while (m != 0)
+	{
+		printf("\n*************************\n");
+		printf("1.停车\n");
+		printf("2.离开\n");
+		printf("3.输出停车场信息\n");
+		printf("0.退出\n");
+		printf("*************************\n");
+		printf("请输入功能号0-3：");
+		scanf_s("%d", &m);
+		while (m < 0 || m>3)
+		{
+			printf("\n输入错误！请输入正确的功能号0-3：");
+			scanf_s("%d", &m);
+		}
+		if (m == 1)
+			park(CAR);
+		else if (m == 2)
+			leave(CAR);
+		else if (m == 3)
+			information(CAR);
+	}
+	return 0;
+}
