@@ -84,7 +84,7 @@ void information(struct car CAR[])
 int main()
 {
 	int n;
-	int m = -1;
+	int m = -1；
 	while (m != 0)
 	{
 		printf("\n*************************\n");
